@@ -1,0 +1,1336 @@
+# CAMPUSSHARE
+## Complete Full-Stack Resource Sharing and Laboratory Management Platform
+### CodeVerse India 2026 Hackathon
+
+## YOUR ROLE
+
+Act as a senior full-stack developer, software architect, UI/UX designer, database engineer, security specialist and QA engineer.
+
+Your task is to develop a complete, professional, interactive, responsive and functional web application called *CampusShare*.
+
+The application must be a working product, not merely a landing page, static dashboard, UI mockup or collection of disconnected screens.
+
+You must implement the frontend, backend, database, authentication, resource management, laboratory management, equipment inventory, booking workflows, instructor dashboard, fair-allocation mechanism, condition reporting, incident management, audit logs and analytics.
+
+Work directly in the currently opened repository. Inspect existing files before modifying them. Preserve useful existing code and adapt the implementation to the current project structure where practical.
+
+Do not stop after generating a plan. Make actual code changes, connect the features, run available checks, fix errors and continue until the core application works.
+
+If credentials are unavailable, implement the integration and provide setup instructions without pretending that the external service has been configured or tested.
+
+---
+
+# 1. PROJECT OBJECTIVE
+
+CampusShare is a resource-sharing platform designed for colleges, universities, laboratories, makerspaces, research facilities, community organisations and small businesses.
+
+Institutions frequently own equipment and spaces that remain unused for long periods. At the same time, students, researchers and project teams may lack access to these resources because purchasing or privately renting them is expensive.
+
+CampusShare solves this problem by allowing authorised people to list, discover, reserve, use and return shared resources through a trusted digital platform.
+
+The platform must support:
+
+- Laboratory management.
+- Equipment inventory management.
+- Classroom and meeting-room reservations.
+- Resource availability calendars.
+- Student booking requests.
+- Instructor approval workflows.
+- Eligibility and safety verification.
+- Fair allocation of limited resources.
+- Check-in and check-out.
+- Before-and-after condition reports.
+- Damage and delay reporting.
+- Maintenance scheduling.
+- Notifications.
+- Audit history.
+- Resource utilisation analytics.
+- Institution-level administration.
+
+The primary demonstration use case should be an engineering college, with an Electronics and Communication Engineering department and its laboratories.
+
+The application must also support other departments and institutions through configurable resource categories and institutional settings.
+
+# 2. REQUIRED TECHNOLOGY STACK
+
+Use the following stack unless the existing repository already contains a compatible implementation that should be preserved.
+
+Frontend:
+- React.
+- TypeScript.
+- Vite.
+- Tailwind CSS.
+- shadcn/ui where appropriate.
+- Lucide React icons.
+- React Router.
+- React Hook Form.
+- Zod validation.
+- Recharts for charts and analytics.
+
+Backend:
+- Supabase.
+- PostgreSQL.
+- Supabase Auth.
+- Supabase Storage.
+- Row Level Security.
+- Database migrations.
+- Secure server-side operations for sensitive workflows.
+
+Deployment:
+- Vercel for the frontend.
+- Supabase for the backend and database.
+- GitHub for version control.
+
+Use current compatible package versions and official documentation.
+
+Inspect the repository before introducing or replacing dependencies.
+
+Never expose service-role keys, private API keys or privileged credentials in browser-accessible code.
+
+If Supabase credentials are unavailable, implement the integration and create clear setup instructions.
+
+For local development, a development-only demonstration mode may be provided if necessary. Clearly separate it from production mode. Never silently substitute local mock data for a failed production database connection.
+
+# 3. PROFESSIONAL UI/UX DESIGN
+
+Create a premium SaaS-style interface suitable for a modern university technology platform.
+
+Visual direction:
+- Clean, modern and professional.
+- Light neutral backgrounds.
+- Deep navy or charcoal text.
+- Teal or emerald accent colours.
+- Restrained gradients.
+- Rounded cards.
+- Consistent spacing.
+- High-quality typography.
+- Lucide icons.
+- Subtle animations.
+- Accessible colour contrast.
+- Responsive layouts.
+
+Build a consistent design system for buttons, forms, cards, tables, modals, badges, alerts and navigation.
+
+Include:
+- Professional CampusShare branding.
+- Responsive navigation.
+- Collapsible dashboard sidebar.
+- Search and filtering.
+- Resource cards with images.
+- Calendar interfaces.
+- Status badges.
+- Loading indicators.
+- Skeleton screens.
+- Empty states.
+- Confirmation dialogs.
+- Toast notifications.
+- Form validation.
+- Helpful error messages.
+- Accessible keyboard navigation.
+
+Every visible interactive control must perform its intended function.
+
+Do not create buttons that merely display success messages without completing the underlying operation.
+
+# 4. PUBLIC LANDING PAGE
+
+Create an attractive public homepage.
+
+Hero headline:
+
+*Make Every Resource Count.*
+
+Supporting description:
+
+Discover, share and manage equipment and spaces through one trusted platform. Make underused resources accessible while keeping every booking safe, fair and accountable.
+
+Primary button: Explore Resources.
+
+Secondary button: List a Resource.
+
+Additional sections:
+
+1. How CampusShare Works.
+2. Explore Available Resources.
+3. Laboratory and Equipment Management.
+4. Built for Educational Institutions.
+5. Trust, Safety and Verification.
+6. Fair Resource Allocation.
+7. Resource Utilisation Analytics.
+8. Frequently Asked Questions.
+9. Registration CTA.
+10. Footer.
+
+Use realistic fictional demonstration data and attractive visual representations of engineering laboratories, instruments and shared workspaces.
+
+Do not display confidential institutional information.
+
+Clearly distinguish illustrative statistics from metrics calculated using real database records.
+
+# 5. USER ROLES AND AUTHENTICATION
+
+Implement real authentication using Supabase Auth.
+
+Support:
+- Registration.
+- Login.
+- Logout.
+- Password reset.
+- Session persistence.
+- Profile management.
+- Protected routes.
+- Role-based navigation.
+- Secure access control.
+
+Create the following roles.
+
+### A. Student / Resource User
+
+Can:
+- Search for laboratories and equipment.
+- View resource specifications and availability.
+- Check eligibility.
+- Submit booking requests.
+- View personal booking history.
+- Join waiting lists.
+- Cancel eligible bookings.
+- Request booking extensions.
+- Check out or return resources when permitted by the workflow.
+- Submit condition reports where authorised.
+- Report damage or other incidents.
+- Receive notifications.
+
+### B. Instructor / Faculty Member
+
+Can:
+- Create and manage authorised laboratories.
+- Add equipment to laboratories.
+- Manage inventory quantities.
+- Configure equipment availability.
+- Set eligibility and safety requirements.
+- Approve or reject booking requests.
+- Manage laboratory reservations.
+- Schedule practical sessions.
+- Block unavailable time slots.
+- Record equipment handovers and returns.
+- Review condition reports.
+- Manage maintenance status.
+- Report and investigate incidents within their permissions.
+- View usage statistics for their assigned resources.
+
+### C. Laboratory Technician / Resource Manager
+
+Can:
+- Manage assigned laboratory inventory.
+- Add and edit equipment.
+- Update equipment condition.
+- Schedule maintenance.
+- Record check-in and check-out.
+- Inspect returned equipment.
+- Report missing or damaged components.
+- Review authorised booking requests.
+- Manage resource availability.
+
+The institution may configure whether technicians can approve bookings independently or only recommend approval to an instructor.
+
+### D. Institution Manager
+
+Can:
+- Manage the institution's departments.
+- Assign instructors and technicians to laboratories.
+- Authorise resource ownership.
+- Configure institutional policies.
+- Review institution-level bookings.
+- Resolve disputes.
+- Manage access rules.
+- Inspect utilisation analytics.
+- Review incidents.
+- Manage institutional users and permissions.
+
+### E. System Administrator
+
+Can:
+- Manage platform configuration.
+- Manage institutional onboarding.
+- Assign authorised administrative roles.
+- Monitor platform-level activity.
+- Manage approved system settings.
+
+Public registration must never allow users to assign themselves instructor, manager or administrator privileges.
+
+Role assignments must be performed through an authorised process.
+
+Enforce permissions in the backend and database, not just by hiding frontend buttons.
+
+# 6. INSTITUTION, DEPARTMENT AND LABORATORY HIERARCHY
+
+Implement a structured organisational hierarchy:
+
+Institution → Department → Laboratory or Facility → Equipment.
+
+For example:
+
+ABC Engineering College
+- Electronics and Communication Engineering
+  - Analog Electronics Laboratory
+  - Digital Electronics Laboratory
+  - Communication Systems Laboratory
+  - Embedded Systems Laboratory
+  - VLSI Laboratory
+- Computer Science Engineering
+  - Programming Laboratory
+  - Computer Networks Laboratory
+- Mechanical Engineering
+  - Manufacturing Workshop
+  - CAD Laboratory
+
+These are fictional demonstration examples.
+
+Allow institution managers to add, edit and manage departments.
+
+Allow authorised instructors and technicians to manage laboratories assigned to them.
+
+Support multiple institutions without exposing one institution's private data to another.
+
+Every laboratory and equipment record must be associated with the appropriate institution and, where applicable, department.
+
+# 7. INSTRUCTOR LABORATORY MANAGEMENT MODULE
+
+This is a mandatory core feature.
+
+Build a complete Instructor Dashboard with the ability to create, edit, manage and monitor laboratories.
+
+### Laboratory creation
+
+An authorised instructor must be able to create a laboratory by entering:
+
+- Laboratory name.
+- Laboratory code.
+- Institution.
+- Department.
+- Building name.
+- Floor.
+- Room number.
+- Description.
+- Laboratory photographs.
+- Capacity.
+- Opening days.
+- Operating hours.
+- Booking duration limits.
+- Buffer time between reservations.
+- Eligible student groups.
+- Safety requirements.
+- Training requirements.
+- Supervision requirements.
+- Approval rules.
+- Usage restrictions.
+- Laboratory manager.
+- Maintenance status.
+- Publication status.
+
+Provide a clear form with validation.
+
+Prevent invalid capacity values, missing required fields and conflicting operating-hour definitions.
+
+### Laboratory management
+
+Instructors must be able to:
+
+- View all laboratories assigned to them.
+- Edit laboratory information.
+- Publish or unpublish a laboratory.
+- Temporarily mark a laboratory unavailable.
+- View its equipment inventory.
+- View upcoming reservations.
+- View historical bookings.
+- View laboratory utilisation.
+- Block time slots.
+- Reserve the laboratory for practical sessions.
+- Reserve the laboratory for examinations.
+- Schedule maintenance.
+- Review booking requests.
+- Inspect reported incidents.
+
+Unpublished or unavailable laboratories must not accept new bookings.
+
+Existing confirmed bookings must be handled through an explicit cancellation or rescheduling process if a laboratory becomes unavailable.
+
+### Laboratory calendar
+
+Create a calendar with:
+- Daily view.
+- Weekly view.
+- Monthly view.
+- Confirmed reservations.
+- Pending requests where authorised.
+- Practical sessions.
+- Maintenance periods.
+- Blocked slots.
+- Available time slots.
+
+Use clear visual indicators for each booking status.
+
+Prevent conflicting confirmed reservations.
+
+Allow authorised instructors to define recurring laboratory sessions if feasible.
+
+# 8. EQUIPMENT INVENTORY MANAGEMENT
+
+Instructors and authorised laboratory technicians must be able to add, edit, publish, archive and manage laboratory equipment.
+
+Support categories such as:
+- Arduino kits.
+- Development boards.
+- Oscilloscopes.
+- Function generators.
+- Multimeters.
+- Power supplies.
+- Digital electronics trainer kits.
+- Analog electronics trainer kits.
+- Communication systems equipment.
+- Embedded systems development boards.
+- Computers.
+- Cameras.
+- Projectors.
+- 3D printers.
+- Fabrication tools.
+- Other specialised equipment.
+
+Each equipment record must include:
+
+- Equipment name.
+- Equipment category.
+- Description.
+- Photograph.
+- Institution.
+- Department.
+- Laboratory or storage location.
+- Inventory code.
+- Manufacturer and model, if applicable.
+- Total quantity.
+- Available quantity, calculated from inventory state.
+- Booking duration.
+- Availability schedule.
+- Eligibility requirements.
+- Training requirements.
+- Supervision rules.
+- Usage restrictions.
+- Approval requirements.
+- Current condition.
+- Maintenance status.
+- Maintenance schedule.
+- Deposit, if applicable.
+- Responsible instructor or technician.
+- Publication status.
+
+### Inventory quantity management
+
+An instructor must be able to enter:
+
+- Equipment name: Arduino Development Kit.
+- Laboratory: Embedded Systems Laboratory.
+- Total quantity: 10.
+- Minimum booking duration: 1 hour.
+- Maximum booking duration: 4 hours.
+- Eligibility: Verified institutional students.
+- Approval: Instructor approval required.
+
+The platform must track inventory accurately.
+
+For example:
+
+Total inventory: 10 Arduino kits.
+
+- 3 available.
+- 4 reserved.
+- 2 checked out.
+- 1 under maintenance.
+
+These numbers must be calculated from actual inventory records.
+
+Do not allow users to book equipment that is already reserved, checked out or under maintenance.
+
+Where multiple identical devices exist, maintain individual inventory-unit records when necessary to track serial numbers, handovers, condition and damage.
+
+For equipment that can be booked by quantity, prevent reservations from exceeding the available quantity.
+
+### Inventory operations
+
+Support:
+- Adding new equipment.
+- Editing equipment details.
+- Updating quantities.
+- Assigning equipment to laboratories.
+- Moving equipment between authorised locations.
+- Marking equipment under maintenance.
+- Recording maintenance completion.
+- Marking equipment damaged.
+- Archiving retired equipment.
+- Viewing utilisation history.
+- Tracking checked-out items.
+- Viewing overdue returns.
+
+Any equipment movement must be recorded in the audit history.
+
+Archived equipment must remain visible in historical records but cannot accept new bookings.
+
+# 9. RESOURCE DISCOVERY AND SEARCH
+
+Create a functional resource discovery page.
+
+Allow users to search and filter by:
+- Resource name.
+- Category.
+- Institution.
+- Department.
+- Laboratory.
+- Building or location.
+- Date.
+- Start time.
+- End time.
+- Availability.
+- Required training.
+- Eligibility.
+- Resource type.
+
+Support sorting by:
+- Relevance.
+- Name.
+- Availability.
+- Popularity where meaningful.
+- Lowest booking cost, where applicable.
+
+Provide grid and list views.
+
+Resource cards must display:
+- Photograph.
+- Name.
+- Category.
+- Location.
+- Availability.
+- Eligibility.
+- Important restrictions.
+- Booking approval requirements.
+
+Resource details must explain all applicable rules before a user submits a request.
+
+Show useful empty states when no results match.
+
+# 10. AVAILABILITY ENGINE AND BOOKING WORKFLOW
+
+Implement a real booking workflow backed by PostgreSQL.
+
+Users must be able to:
+
+1. Select a laboratory, space or equipment item.
+2. Choose a date.
+3. Select a start time and end time.
+4. Enter the intended purpose.
+5. Enter the required quantity when applicable.
+6. Provide supporting information.
+7. Review eligibility and usage conditions.
+8. Submit a booking request.
+9. View the request status.
+10. Receive the owner's decision.
+
+Booking statuses:
+
+- Pending.
+- Approved.
+- Rejected.
+- Waitlisted.
+- Checked Out.
+- Return Pending Inspection.
+- Completed.
+- Cancelled.
+- Overdue.
+- Under Review.
+
+Implement valid state transitions.
+
+Validate:
+- User authorisation.
+- Resource availability.
+- Booking duration.
+- Booking notice requirements.
+- Eligibility.
+- Training.
+- Required supervision.
+- Maximum active bookings.
+- Quantity availability.
+- Existing reservations.
+- Maintenance restrictions.
+- Institutional policies.
+
+Prevent overlapping confirmed bookings.
+
+Use backend validation and appropriate PostgreSQL constraints or transactional locking to prevent race conditions.
+
+For a laboratory, prevent overlapping reservations beyond the configured capacity or availability rules.
+
+For equipment inventories, prevent the total reserved quantity from exceeding the quantity available for the requested period.
+
+Do not rely exclusively on frontend checks.
+
+# 11. LABORATORY AND EQUIPMENT APPROVALS
+
+Build a dedicated instructor approval dashboard.
+
+Display:
+- Pending laboratory requests.
+- Pending equipment requests.
+- Requesting user.
+- Requested resource.
+- Requested date and time.
+- Requested quantity.
+- Purpose of use.
+- Eligibility status.
+- Required training.
+- Existing conflicts.
+- Previous relevant usage.
+- Waiting-list information.
+
+Instructors must be able to:
+- Approve.
+- Reject with a reason.
+- Request additional information.
+- Place eligible requests on a waiting list.
+- Review cancellation requests.
+- Review extension requests.
+
+The system must record who made each decision and when.
+
+Users must see clear reasons for rejection or waiting-list placement.
+
+Owners may approve requests only for resources they own or are authorised to manage.
+
+# 12. FAIRSHARE ALLOCATION ENGINE
+
+Implement a transparent and configurable allocation system for high-demand resources.
+
+Mandatory safety and eligibility requirements must be enforced first.
+
+For eligible users, calculate an illustrative priority score using:
+
+- Recent resource usage: 50%.
+- Waiting time: 30%.
+- Booking-need score: 20%.
+
+These weights are configurable demonstration defaults.
+
+Document how each factor is calculated and normalised.
+
+The booking-need score must use explainable criteria suitable for the institution. Do not use sensitive personal characteristics.
+
+Support:
+- Maximum active bookings.
+- Borrowing-hour limits.
+- Consecutive reservation limits.
+- Waiting lists.
+- Transparent waiting-list positions.
+- Automatic reconsideration after cancellations.
+- Explainable priority scores.
+- Usage history.
+- Tie-breaking rules.
+- Institution-specific allocation policies.
+
+Owners retain approval authority where required.
+
+Explain to users why their requests were prioritised or waitlisted.
+
+Do not allow the fairness algorithm to override mandatory safety rules.
+
+# 13. ELIGIBILITY AND TRAINING VERIFICATION
+
+Allow resource owners to define mandatory eligibility requirements.
+
+Examples:
+- Institutional membership.
+- Department membership.
+- Laboratory safety training.
+- Equipment-specific training.
+- Faculty authorisation.
+- Qualification verification.
+- Required supervision.
+
+Display verification states:
+- Verified.
+- Pending.
+- Expired.
+- Rejected.
+- Not Required.
+
+For the initial version, use administrator-managed verification records and fictional demonstration data.
+
+Support document uploads where required, with private storage and authorised access.
+
+Do not claim that a document has been independently verified unless a real verification process exists.
+
+Ineligible users must not be able to bypass mandatory restrictions by manipulating frontend requests.
+
+# 14. EQUIPMENT CHECK-IN AND CHECK-OUT
+
+Implement a complete handover and return process.
+
+### Check-in
+
+An authorised instructor or technician must be able to:
+
+- Open the approved booking.
+- Verify the authorised borrower.
+- Confirm the assigned equipment.
+- Record the handover timestamp.
+- Record the initial condition.
+- Record accessories and components.
+- Upload condition photographs.
+- Record existing damage.
+- Confirm the handover.
+
+The booking must transition to Checked Out.
+
+### Check-out and return
+
+When equipment is returned, an authorised person must be able to:
+
+- Record the actual return timestamp.
+- Verify the returned inventory unit.
+- Check accessories.
+- Record the final condition.
+- Upload photographs.
+- Report missing components.
+- Report damage.
+- Confirm physical receipt.
+
+If an inspection is required, the booking must enter Return Pending Inspection.
+
+Only after an authorised inspection should the booking become Completed.
+
+The system must correctly update inventory availability.
+
+The student must not be able to bypass required independent return inspection.
+
+For laboratory bookings that do not involve borrowing physical equipment, support an appropriate facility checkout or session-completion workflow.
+
+# 15. CONDITION REPORTS
+
+Implement before-and-after condition documentation.
+
+A condition report should include:
+- Associated booking.
+- Associated resource or inventory unit.
+- Report type.
+- Condition rating.
+- Description.
+- Photographs.
+- Missing components.
+- Visible damage.
+- Timestamp.
+- Responsible person.
+
+Allow authorised staff to compare the initial and final reports.
+
+If a discrepancy is reported, flag it for review.
+
+Do not automatically conclude that the borrower caused the damage. Preserve both reports and allow an authorised manager to investigate.
+
+# 16. MAINTENANCE MANAGEMENT
+
+Create a maintenance module for instructors and technicians.
+
+Allow authorised staff to:
+- Schedule maintenance.
+- Record maintenance start and end dates.
+- Describe the maintenance task.
+- Assign a responsible person.
+- Mark equipment under maintenance.
+- Record maintenance findings.
+- Upload supporting documents.
+- Mark maintenance complete.
+- Restore equipment availability after appropriate checks.
+
+Equipment under maintenance must not be offered for new bookings.
+
+If maintenance conflicts with existing reservations, alert the responsible manager and require an explicit resolution.
+
+Maintain a history of maintenance operations.
+
+# 17. INCIDENT MANAGEMENT
+
+Support incidents such as:
+- Damaged equipment.
+- Missing components.
+- Late return.
+- Safety concern.
+- Unauthorised usage.
+- Scheduling conflict.
+- Disputed condition report.
+- Equipment malfunction.
+
+Each incident must contain:
+- Incident identifier.
+- Related resource.
+- Related booking.
+- Reporter.
+- Category.
+- Description.
+- Supporting photographs.
+- Creation timestamp.
+- Assigned reviewer.
+- Status.
+- Resolution notes.
+- Resolution timestamp.
+
+Incident statuses:
+- Reported.
+- Under Review.
+- Awaiting Information.
+- Resolved.
+- Closed.
+
+Allow authorised instructors, technicians and managers to review incidents within their permissions.
+
+Notify relevant parties when incident statuses change.
+
+Maintain an auditable record of all important incident actions.
+
+Do not impose automatic financial penalties or declare a user responsible for damage solely because of an algorithmic assessment.
+
+# 18. CANCELLATIONS, EXTENSIONS AND SCHEDULING CONFLICTS
+
+Implement:
+- User cancellation.
+- Authorised owner cancellation.
+- Cancellation reasons.
+- Cancellation deadlines.
+- Extension requests.
+- Extension approval and rejection.
+- Conflict detection.
+- Waiting-list updates.
+- Notifications.
+- Audit records.
+
+An extension must not displace an existing confirmed booking without an authorised resolution.
+
+If a laboratory becomes unavailable, require the responsible instructor or manager to resolve affected reservations.
+
+Notify affected users and explain the reason.
+
+# 19. NOTIFICATION CENTRE
+
+Create an in-app notification centre.
+
+Notify users about:
+- Booking submitted.
+- Booking approved.
+- Booking rejected.
+- Waiting-list movement.
+- Upcoming reservation.
+- Check-in reminder.
+- Return reminder.
+- Overdue return.
+- Cancellation.
+- Extension decision.
+- Maintenance affecting a reservation.
+- Incident created.
+- Incident status changed.
+- Verification status changed.
+
+Allow users to mark notifications as read or unread.
+
+Notifications must link only to records the recipient is authorised to view.
+
+Email notifications may be implemented as an optional integration using secure server-side credentials.
+
+# 20. ROLE-SPECIFIC DASHBOARDS
+
+### Student dashboard
+
+Display:
+- Upcoming bookings.
+- Active checkouts.
+- Pending requests.
+- Waiting-list positions.
+- Completed bookings.
+- Overdue resources.
+- Notifications.
+- Reported incidents.
+- Recommended available resources.
+
+### Instructor dashboard
+
+Display:
+- Laboratories managed.
+- Equipment inventory.
+- Total inventory quantities.
+- Available equipment.
+- Pending booking requests.
+- Upcoming laboratory sessions.
+- Active equipment checkouts.
+- Expected returns.
+- Overdue equipment.
+- Equipment under maintenance.
+- Incidents requiring attention.
+- Laboratory utilisation.
+- Equipment utilisation.
+
+Provide prominent quick actions:
+
+- Add Laboratory.
+- Add Equipment.
+- Manage Inventory.
+- View Availability Calendar.
+- Review Booking Requests.
+- Record Equipment Handover.
+- Inspect Returns.
+- Schedule Maintenance.
+
+### Laboratory technician dashboard
+
+Display:
+- Assigned laboratories.
+- Equipment awaiting handover.
+- Equipment awaiting return inspection.
+- Current checkouts.
+- Overdue items.
+- Maintenance tasks.
+- Incident reports.
+- Equipment condition records.
+
+### Institution manager dashboard
+
+Display:
+- Total departments.
+- Total laboratories.
+- Total equipment inventory.
+- Active bookings.
+- Resource utilisation.
+- High-demand equipment.
+- Waiting-list demand.
+- Overdue returns.
+- Incidents.
+- Maintenance status.
+- Department-level comparisons.
+
+### System administrator dashboard
+
+Display:
+- Registered institutions.
+- Institutional onboarding requests.
+- User counts by role.
+- Resource counts.
+- Booking activity.
+- Administrative activity.
+- System configuration.
+
+All dashboard metrics must come from actual database records or be clearly labelled as demonstration data.
+
+# 21. RESOURCE UTILISATION ANALYTICS
+
+Build analytics for instructors and managers.
+
+Include:
+- Equipment utilisation.
+- Laboratory utilisation.
+- Most requested resources.
+- Least-used resources.
+- Booking completion rates.
+- Overdue return statistics.
+- Incident statistics.
+- Maintenance downtime.
+- Waiting-list demand.
+- Number of unique users served.
+
+Allow filtering by date range, department, laboratory and resource category.
+
+Define utilisation calculations clearly.
+
+Do not fabricate measured outcomes or present sample figures as real institutional statistics.
+
+Use responsive charts and tables.
+
+# 22. AUDIT LOGGING
+
+Record important events:
+- Resource creation.
+- Resource modification.
+- Laboratory creation.
+- Equipment addition.
+- Inventory changes.
+- Availability changes.
+- Booking submission.
+- Eligibility evaluation.
+- Approval.
+- Rejection.
+- Waiting-list changes.
+- Cancellation.
+- Extension decision.
+- Check-in.
+- Return.
+- Condition reports.
+- Maintenance actions.
+- Incident creation.
+- Incident resolution.
+- Administrative changes.
+
+Each record should include:
+- Event identifier.
+- Actor.
+- Action.
+- Entity type.
+- Entity identifier.
+- Timestamp.
+- Relevant non-sensitive metadata.
+- Reason, where applicable.
+
+Use secure server-side logic or database triggers for critical audit events.
+
+Ordinary users must not be able to modify or delete audit records.
+
+Do not log passwords, authentication tokens or unnecessary sensitive data.
+
+Provide searchable audit history to authorised users.
+
+# 23. DATABASE ARCHITECTURE
+
+Design a relational PostgreSQL schema with appropriate relationships, constraints and indexes.
+
+Suggested tables:
+
+- institutions
+- departments
+- profiles
+- institution_memberships
+- laboratories
+- laboratory_assignments
+- resources
+- inventory_units
+- resource_availability
+- eligibility_requirements
+- verification_records
+- bookings
+- booking_inventory_allocations
+- waiting_list_entries
+- checkin_checkout_records
+- condition_reports
+- maintenance_records
+- incidents
+- notifications
+- audit_logs
+
+Adapt the schema where necessary to support the chosen implementation.
+
+Use foreign keys and appropriate indexes.
+
+Maintain consistency between total inventory, assigned units, available quantities, active reservations and maintenance status.
+
+Do not store available quantities as independently editable values when they can be calculated from authoritative inventory records.
+
+Use migrations rather than relying on undocumented manual database changes.
+
+# 24. SECURITY AND PRIVACY
+
+Implement Row Level Security on protected tables.
+
+Required rules include:
+- Students can access their permitted profile information and private booking records.
+- Instructors can manage assigned laboratories and resources.
+- Technicians can manage only their assigned resources.
+- Institution managers can access authorised records within their institutions.
+- Private verification documents are restricted to authorised reviewers.
+- Audit logs cannot be modified by ordinary users.
+- Users cannot assign themselves privileged roles.
+- Users cannot manipulate another user's bookings.
+- Users cannot approve their own requests where independent approval is required.
+- Only authorised users can perform equipment handovers and return inspections.
+- Cross-institution data must remain isolated.
+
+Validate sensitive operations in trusted backend logic.
+
+Restrict file types and upload sizes.
+
+Use private storage for sensitive photographs and verification documents where appropriate.
+
+Use signed URLs for temporary access to private files.
+
+Do not expose personal data unnecessarily.
+
+# 25. DEMONSTRATION DATA
+
+Create fictional demonstration data for ABC Engineering College.
+
+Departments:
+- Electronics and Communication Engineering.
+- Computer Science Engineering.
+- Mechanical Engineering.
+
+Example laboratories:
+- Analog Electronics Laboratory.
+- Digital Electronics Laboratory.
+- Embedded Systems Laboratory.
+- Communication Systems Laboratory.
+- VLSI Laboratory.
+- Programming Laboratory.
+- Manufacturing Workshop.
+
+Example equipment:
+- 10 Arduino Development Kits.
+- 5 Oscilloscopes.
+- 5 Function Generators.
+- 10 Digital Multimeters.
+- 8 Power Supplies.
+- 5 Digital Electronics Trainer Kits.
+- 5 Analog Electronics Trainer Kits.
+- 4 Development Computers.
+- 2 DSLR Cameras.
+- 1 3D Printer.
+
+Use fictional instructors, technicians and students.
+
+Include realistic examples of available resources, pending requests, approved bookings, completed bookings, waiting-list entries, overdue equipment and incidents under review.
+
+Ensure the demonstration data respects inventory and booking constraints.
+
+Clearly identify sample data as fictional.
+
+Do not use real student identities or confidential institutional information.
+
+Create documented demo-account setup instructions.
+
+Never publish a privileged administrator account with unrestricted permissions and a hardcoded password.
+
+# 26. OPTIONAL AI FEATURES
+
+Only after the complete core workflow works, consider implementing:
+
+- Resource recommendations based on the user's search and stated requirements.
+- Natural-language resource search.
+- Scheduling conflict explanations.
+- Incident-report summaries.
+- Resource-demand summaries for instructors.
+
+AI features must be optional and must not prevent core workflows from working when an external AI service is unavailable.
+
+Do not send confidential records or unnecessary personal data to external AI services.
+
+Do not allow AI to override eligibility requirements, grant unauthorised access or impose penalties without authorised human review.
+
+Clearly disclose any external AI APIs used.
+
+# 27. RESPONSIVENESS AND ACCESSIBILITY
+
+Ensure the application works on desktop, tablet and mobile browsers.
+
+Implement:
+- Semantic HTML.
+- Accessible labels.
+- Keyboard navigation.
+- Focus indicators.
+- Accessible dialogs.
+- Readable error messages.
+- Responsive tables.
+- Mobile-friendly calendars.
+- Suitable contrast.
+- Helpful empty states.
+
+Avoid horizontal overflow.
+
+# 28. TESTING
+
+Create automated tests where practical.
+
+Test:
+- Authentication.
+- Role permissions.
+- Laboratory creation.
+- Equipment creation.
+- Inventory quantity updates.
+- Availability calculations.
+- Booking submission.
+- Approval and rejection.
+- Overlapping-booking prevention.
+- Equipment quantity constraints.
+- Fair-allocation calculations.
+- Waiting-list handling.
+- Check-in.
+- Return inspection.
+- Maintenance restrictions.
+- Incident reporting.
+- Cancellation.
+- Audit history.
+
+Run the available lint, TypeScript, test and production-build commands.
+
+Fix errors before declaring completion.
+
+Do not claim a test passed unless it was actually executed.
+
+# 29. REQUIRED END-TO-END DEMONSTRATION
+
+The final product must support this complete workflow.
+
+1. An institution manager assigns an instructor to the ECE department.
+2. The instructor logs in.
+3. The instructor creates an Analog Electronics Laboratory.
+4. The instructor adds five oscilloscopes and ten function generators.
+5. The instructor configures operating hours, eligibility and booking conditions.
+6. A student searches for an oscilloscope.
+7. The student checks availability and eligibility.
+8. The student requests a specific time slot.
+9. The backend validates the request.
+10. The instructor reviews and approves it.
+11. An authorised technician records the initial equipment condition.
+12. The equipment is checked out.
+13. The student returns the equipment.
+14. The technician records the return condition.
+15. The technician completes the inspection.
+16. The booking is marked Completed.
+17. The inventory availability is updated.
+18. The audit history records the transaction.
+
+Also demonstrate:
+- Two students requesting the same time slot.
+- A student who fails an eligibility requirement.
+- A resource being placed under maintenance.
+- A cancelled reservation updating the waiting list.
+- An equipment damage report being reviewed.
+
+The demonstration must work through the actual application, not by manually changing database records during the presentation.
+
+# 30. DOCUMENTATION
+
+Create a professional README.md with:
+- Project overview.
+- Features.
+- Architecture.
+- Technology stack.
+- Installation instructions.
+- Environment variables.
+- Supabase setup.
+- Database migration instructions.
+- Demonstration data setup.
+- Testing.
+- Deployment.
+- Demo accounts.
+- Security considerations.
+- Known limitations.
+- Future improvements.
+
+Create an .env.example with placeholders only.
+
+Ensure .env and other secret files are excluded from version control.
+
+Also create PROJECT_DOCUMENT.md explaining:
+- Problem statement.
+- Target users.
+- Selected use case.
+- Proposed solution.
+- User workflows.
+- Laboratory and equipment management.
+- Fair-allocation method.
+- System architecture.
+- Database design.
+- Security and privacy.
+- Testing.
+- Implemented features.
+- Known limitations.
+- Future development.
+- Technology stack.
+- AI tools and external APIs used.
+- Existing libraries, templates and components used.
+- Team member roles and contributions.
+
+Do not invent research findings, user interviews, performance measurements or completed tests.
+
+# 31. IMPLEMENTATION ORDER
+
+Follow this order:
+
+Phase 1: Inspect the repository and existing technology stack.
+
+Phase 2: Establish the architecture, database schema, authentication and role permissions.
+
+Phase 3: Build the shared design system and public landing page.
+
+Phase 4: Implement institutions, departments, laboratory creation and laboratory management.
+
+Phase 5: Implement equipment listings, inventory units and maintenance.
+
+Phase 6: Implement resource discovery, calendars, availability and booking requests.
+
+Phase 7: Implement instructor approvals, eligibility checks and fair allocation.
+
+Phase 8: Implement check-in, check-out, condition reports and incident management.
+
+Phase 9: Implement notifications, audit logs and analytics.
+
+Phase 10: Connect every feature to the backend and test the full workflow.
+
+Phase 11: Run linting, type checks, automated tests and the production build.
+
+Phase 12: Complete documentation and deployment instructions.
+
+Do not unnecessarily recreate completed features.
+
+Do not stop after generating files without connecting the actual workflows.
+
+# 32. PRIORITY IF TIME IS LIMITED
+
+Priority 1:
+Authentication, roles, laboratory creation, equipment inventory, discovery, availability, booking requests and instructor approval.
+
+Priority 2:
+Check-in, return inspection, condition reports and audit history.
+
+Priority 3:
+Eligibility enforcement, waiting lists, fair allocation, maintenance and incident management.
+
+Priority 4:
+Notifications, analytics and interface refinement.
+
+Priority 5:
+Optional AI features and external integrations.
+
+Always prioritise a working end-to-end product over decorative features.
+
+# 33. FINAL DEFINITION OF DONE
+
+The project is complete when:
+
+- The website has a professional, responsive interface.
+- Authentication works when configured.
+- User permissions are enforced.
+- Instructors can create and manage laboratories.
+- Instructors and technicians can add and manage equipment.
+- Inventory quantities are accurate.
+- Laboratory schedules and equipment availability are functional.
+- Students can search and request resources.
+- Eligibility is enforced.
+- Instructors can approve and reject requests.
+- Conflicting bookings are prevented.
+- Waiting lists and fair allocation work.
+- Equipment handovers and returns persist in the database.
+- Condition reports and incidents work.
+- Maintenance affects availability correctly.
+- Important actions appear in audit history.
+- Dashboards use actual database records.
+- The complete demonstration workflow works.
+- The production build succeeds.
+- Documentation and deployment instructions are complete.
+- External configuration requirements and remaining limitations are documented honestly.
+
+## FINAL INSTRUCTION
+
+Start by inspecting the repository. Then implement the complete CampusShare application directly in the existing project.
+
+Do not return only a design proposal or a list of steps. Make the actual code changes, integrate the modules, run the available checks and fix errors.
+
+At completion, provide a concise report stating:
+1. What was implemented.
+2. Which end-to-end workflows work.
+3. Which tests and build commands were executed.
+4. What requires external configuration.
+5. How to run the project locally.
+6. How to deploy the project.
+7. Which limitations remain.
+
+Begin implementation now.

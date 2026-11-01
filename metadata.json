@@ -1,0 +1,6 @@
+{
+  "name": "CampusShare — Lab & Equipment Resource Sharing Platform",
+  "description": "Enterprise university resource sharing, laboratory scheduling, equipment inventory management, fair allocation, and condition reporting platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
